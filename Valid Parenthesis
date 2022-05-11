@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> symbol = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                symbol.push(c);
+            }
+            else if (c == ')' && !symbol.isEmpty() && symbol.peek() == '(') {
+                symbol.pop();
+            }
+            else if (c == '}' && !symbol.isEmpty() && symbol.peek() == '{') {
+                symbol.pop();
+            } 
+            else if (c == ']' && !symbol.isEmpty() && symbol.peek() == '[') {
+                symbol.pop();
+            }
+            else {
+                return false;
+            }
+        }
+        return symbol.isEmpty();
+        
+    }
+}
