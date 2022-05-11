@@ -1,0 +1,47 @@
+import java.util.*;
+class Solution{
+    int Integer(char r){
+        if(r=='I')
+            return 1;
+        else if(r=='V')
+            return 5;
+        else if(r=='X')
+            return 10;
+        else if(r=='L')
+            return 50;
+        else if(r=='C')
+            return 100;
+        else if(r=='D')
+            return 500;
+        else if(r=='M')
+            return 1000;
+        else
+            return -1;
+    }
+    int romanToInt(String s){
+        int sum=0;
+        for(int i=0;i<s.length();i++){
+            int s1 = Integer(s.charAt(i));
+            int j=i+1;
+            if(j<s.length()){
+                int s2 = Integer(s.charAt(j));
+                if(s1>=s2){
+                    sum = sum + s1;
+                }
+                else{
+                    sum = sum - s1;
+                }
+            }
+            else{
+                sum = sum + s1;
+            }
+        }
+        return sum;
+    }
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        Solution sol = new Solution();
+        System.out.println(sol.romanToInt(str));
+    }
+}
